@@ -1,0 +1,84 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+		<meta charset="utf-8">
+		<title>Rooms</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap core CSS -->
+		<link href="{% static 'css/lib/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+		<!-- Swipe core CSS -->
+		<link href="{% static 'css/swipe.min.css' %}" type="text/css" rel="stylesheet">
+		<!-- Favicon -->
+		<link href="{% static 'img/favicon.png' %}" type="image/png" rel="icon">
+        <!-- Room CSS-->
+		<link href="{% static 'css/room.css' %}" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<!-- <div class="navbar">
+			
+		</div> -->
+		<nav class="head">
+			<div style="background-color: #2196F3;" id="logo"><img src="{% static '/images/Frame.png' %}" width="75px" height="75px"></div>
+            <div id = "cat"><i class="fas fa-filter"></i>Categories</div>
+            <form class="search" action="{% url 'searchroom' %}" method="get">
+                <input type="text" name="search" placeholder="Search for a room">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+			<a class="about" href="">Switch To Give</a>
+            <a href=""><i class="fas fa-boxes"></i>Orders</a>
+			<a class="sign" style="font-size: 20px; padding: 15px; margin: 0px" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
+            <a class="sign" style="font-size: 20px; padding: 15px; margin: 0px" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
+		</nav>
+
+        <section class="wrapper">
+            <div class="container-fostrap">
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+                            {% for room in rooms %}
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="card">
+                                        <a class="img-card" href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
+                                        <img src="/media/{{room.room_pic}}" style="object-fit: contain;"/>
+                                    </a>
+                                        <div class="card-content">
+                                            <h4 class="card-title">
+                                                <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html"> {{room.name}} </a>
+                                            </h4>
+                                            <p class="">
+                                                Code :- {{room.code}}
+                                            </p>
+                                        </div>
+                                        <div class="card-read-more">
+                                            <a href="{% url 'detailroom' room.code %}" class="btn btn-link btn-block">
+                                                Enter
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}" ></script>
+		<script>window.jQuery || document.write(`<script src="{% static 'js/vendor/jquery-slim.min.js' %}"><\/script>`)</script>
+		<script src="{% static 'js/vendor/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	</body>
+
+</html>
+
+
+
+

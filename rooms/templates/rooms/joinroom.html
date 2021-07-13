@@ -1,0 +1,22 @@
+
+{% extends 'accounts/forms_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Join Room
+{% endblock %}
+
+{% block form_back %}
+    <a href="{% url 'rooms' %}"><img src="{% static 'img/circled-left-2.png' %}" width="50px" height="50px"></a>
+{% endblock %}
+
+{% block form_body %}
+    <center><h1>Join a new Room</h1></center>
+	<form method="POST" action="{% url 'joinroom' %}">
+		{% csrf_token %}
+		Enter Room Code:
+		<input name="code" type="text">
+		<button type="submit" class="btn button" style="margin: 10px 0px 10px 0px;">Join</button>  
+	</form>
+{% endblock %}

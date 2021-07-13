@@ -1,0 +1,127 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+		<meta charset="utf-8">
+		<title>Chatty</title>
+		<meta name="description" content="#">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap core CSS -->
+		<link href="{% static 'css/lib/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+		<!-- Swipe core CSS -->
+		<link href="{% static 'css/swipe.min.css' %}" type="text/css" rel="stylesheet">
+		<!-- Favicon -->
+		<link href="{% static 'img/favicon.png' %}" type="image/png" rel="icon">
+		<!-- Room CSS -->
+		<link href="{% static 'css/rooms2.css' %}" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		{% if messages %}
+			{% for message in messages %}
+				<div class="text-center alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="margin-bottom:0px;">
+					{{ message|safe }}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			{% endfor %}
+		{% endif %}
+		<main>
+			<div class="layout">
+				<!-- Start of Navigation -->
+				<div class="navigation">
+					<div class="container">
+						<div class="inside">
+							<div class="nav nav-tab menu">
+								<button class="btn"><img class="avatar-xl" src="/media/{{user.profile.profile_pic}}" alt="avatar"></button>
+								<a href="{% url 'createroom' %}" title="Create Room"><i class="material-icons">library_add</i></a>
+								<a href="{% url 'rooms' %}" class="active" title="Rooms"><i class="material-icons active">chat_bubble_outline</i></a>
+								<a href="{% url 'joinroom' %}" class="f-grow1" title="Join Room"><i class="material-icons">person_add</i></a>
+								<a href="{% url 'settings' %}" title="Setting"><i class="material-icons">settings</i></a>
+								<a href="{% url 'logout' %}" title="Logout"><button class="btn power"><i class="material-icons">power_settings_new</i></button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End of Navigation -->
+
+				<!-- Start of Sidebar -->
+				<div class="sidebar" id="sidebar">
+					<div class="container">
+						<div class="col-md-12">
+							<div class="tab-content">
+
+								<!-- Start of Discussions -->
+								<div id="discussions" class="tab-pane fade active show">
+									<div class="search">
+										<form class="form-inline position-relative" action="{% url 'searchroom' %}" method="get">
+											<input type="search" class="form-control" id="conversations" placeholder="Search for rooms..." name="search">
+											<button type="submit" class="btn btn-link loop"><i class="material-icons">search</i></button>
+										</form>
+									</div>		
+									<div class="discussions">
+										<h1>Rooms</h1>
+										<div class="list-group" id="chats" role="tablist">
+											{% for room in rooms %}
+												<a href="{% url 'detailroom' room.code %}" class="filterDiscussions all unread single" id="list-chat-list" role="tab">
+													<img class="avatar-md" src="/media/{{room.room_pic}}" data-placement="top" title="{{room.name}}" alt="avatar">
+													<div class="data">
+														<h5>{{room.name}}</h5>
+														<p>Code :- {{room.code}}</p>
+													</div>
+												</a>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+								<!-- End of Discussions -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End of Sidebar -->
+
+				<div class="main">
+					<div class="tab-content" id="nav-tabContent">
+						<!-- Start of Babble -->
+						<div class="babble tab-pane fade active show" id="list-empty" role="tabpanel" aria-labelledby="list-empty-list">
+							<!-- Start of Chat -->
+							<div class="chat" id="chat2">
+								<div class="content empty" style="height: 100vh;">
+									<div class="container">
+										<div class="col-md-12">
+											<div class="no-messages">
+												<i class="material-icons md-48">forum</i>
+												<p>Don't be shy, create or join a new room now.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End of Chat -->
+						</div>
+						<!-- End of Babble -->
+					</div>
+				</div>
+			</div> <!-- Layout -->
+		</main>
+		<!-- Bootstrap/Swipe core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}" ></script>
+		<script>window.jQuery || document.write(`<script src="{% static 'js/vendor/jquery-slim.min.js' %}"><\/script>`)</script>
+		<script src="{% static 'js/vendor/popper.min.js' %}"></script>
+		<script src="{% static 'js/vendor/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script>
+			function scrollToBottom(el) { el.scrollTop = el.scrollHeight; }
+			scrollToBottom(document.getElementById('content'));
+		</script>
+	</body>
+
+</html>

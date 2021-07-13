@@ -1,0 +1,41 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap core CSS -->
+		<link href="{% static 'css/lib/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+		<!-- Swipe core CSS -->
+		<link href="{% static 'css/swipe.min.css' %}" type="text/css" rel="stylesheet">
+		<!-- Favicon -->
+		<link href="{% static 'img/favicon.png' %}" type="image/png" rel="icon">
+		<!-- Profile CSS -->
+		<link href="{% static 'css/profile.css' %}" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="pageNav">
+        </div>
+		{% block form_back %}{% endblock %}
+        <div class="container">
+            <div class="containerBody">
+				<div class="containerform">
+					{% block form_body %}{% endblock %}
+				</div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+		<script>window.jQuery || document.write(`<script src="{% static 'js/vendor/jquery-slim.min.js' %}"><\/script>`)</script>
+		<script src="{% static 'js/vendor/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	</body>
+
+</html>

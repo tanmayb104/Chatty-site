@@ -1,0 +1,34 @@
+html {
+    margin: 0;
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    height: 100%;
+  }
+  .pageNav {
+    background-color: aqua;
+  }
+  .containerBody {
+    border: 2px solid aqua;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  img {
+    margin-left: 15%;
+    margin-top: 50px;
+    margin-bottom: 0px;
+  }
+  .containerform {
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1 {
+    align-items: center;
+    color: black;
+  }
