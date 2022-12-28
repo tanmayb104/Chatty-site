@@ -33,11 +33,11 @@ What I Accomplished
 I successfully implemented the video calling feature. More than two people can currently video call together using the web site. I also implemented:
 
 1. Login/SignUp
-2. Ability to update profile, reset password and forgot password.
+2. Ability to update profile, reset password and forget password.
 3. Join different rooms
 4. Create your own room
 5. Chat functionality in a room
-6. Message are saved to database
+6. Messages are saved to the database
 7. Videocall with participants in a room
 8. Switch audio on/off
 9. Switch video on/off
